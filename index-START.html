@@ -59,6 +59,29 @@
         "Anywhere But Here",
         "An Old Dog"
       ];
+
+      const key = { an: true, ah: true, the: true, a: true };
+
+      let sorted = bands.sort((a, b) => {
+        let firstTitle = a.split(" ");
+        let secondTitle = b.split(" ");
+        console.log(firstTitle[0]);
+        console.log(key);
+        console.log(key[firstTitle[0]]);
+        if (key[firstTitle[0].toLowerCase()]) {
+          firstTitle.shift();
+        }
+
+        if (key[secondTitle[0].toLowerCase()]) {
+          secondTitle.shift();
+        }
+
+        return firstTitle[0] > secondTitle[0] ? 1 : -1;
+      });
+
+      document.querySelector("#bands").innerHTML = sorted
+        .map(band => `<li>${band}</li>`)
+        .join("");
     </script>
   </body>
 </html>
